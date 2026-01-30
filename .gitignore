@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+Frontend/node_modules/
+Backend/venv/
+
+# Build Files
+.next/
+Frontend/.next/
+__pycache__/
+
+# Environment Variables & Database
+.env
+*.db
+*.sqlite3
