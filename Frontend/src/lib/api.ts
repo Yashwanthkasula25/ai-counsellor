@@ -1,7 +1,6 @@
 // frontend/src/lib/api.ts
 
-const API_BASE_URL = "http://127.0.0.1:8000"; // Your FastAPI URL
-
+const API_URL = "https://ai-counsellor-yw5v.onrender.com";
 export interface ChatResponse {
   response: string;
   action_taken?: {
