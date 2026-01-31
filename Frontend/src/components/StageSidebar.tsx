@@ -8,7 +8,7 @@ export default function StageSidebar({ currentStage }: { currentStage: string })
     setLoading(true);
     try {
       // 1. Call Backend to update DB (Backend logic handles the stage increments)
-      await fetch("http://127.0.0.1:8000/user/1/advance_stage", { method: "POST" });
+      await fetch("https://ai-counsellor-yw5v.onrender.com/user/1/advance_stage", { method: "POST" });
       
       // 2. Reload page to reflect changes (Simple but effective)
       window.location.reload();

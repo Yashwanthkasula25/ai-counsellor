@@ -10,7 +10,7 @@ export default function Home() {
   const [stage, setStage] = useState("LOADING...");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/user/1/stage")
+    fetch("https://ai-counsellor-yw5v.onrender.com/user/1/stage")
       .then((res) => res.json())
       .then((data) => setStage(data.stage))
       .catch((err) => console.error(err));

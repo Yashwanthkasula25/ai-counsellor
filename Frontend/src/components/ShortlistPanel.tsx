@@ -14,7 +14,7 @@ export default function ShortlistPanel({ currentStage }: { currentStage: string 
   useEffect(() => {
     const fetchList = async () => {
         try {
-            const res = await fetch("http://127.0.0.1:8000/user/1/shortlist");
+            const res = await fetch("https://ai-counsellor-yw5v.onrender.com/user/1/shortlist");
             const data = await res.json();
             setList(data);
         } catch (e) {
@@ -27,7 +27,7 @@ export default function ShortlistPanel({ currentStage }: { currentStage: string 
   }, []);
 
   const lockUni = async (id: number) => {
-    await fetch(`http://127.0.0.1:8000/user/1/lock/${id}`, { method: "POST" });
+    await fetch(`https://ai-counsellor-yw5v.onrender.com/user/1/lock/${id}`, { method: "POST" });
     window.location.reload(); // Reload to update stage
   };
 
