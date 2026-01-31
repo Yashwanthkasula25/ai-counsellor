@@ -1,19 +1,11 @@
-// frontend/src/lib/api.ts
+// Frontend/src/lib/api.ts
 
+// 🟢 FORCE the Render URL. Do not use localhost.
 const API_URL = "https://ai-counsellor-yw5v.onrender.com";
-export interface ChatResponse {
-  response: string;
-  action_taken?: {
-    tool_use: string;
-    university_name: string;
-    category: string;
-    reasoning: string;
-  };
-}
 
-export async function sendMessage(userId: number, message: string): Promise<ChatResponse> {
+export async function chatWithAI(message: string, userId: string = "user_1") {
   try {
-    const res = await fetch(`${API_BASE_URL}/chat`, {
+    const response = await fetch(`${API_URL}/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,13 +16,19 @@ export async function sendMessage(userId: number, message: string): Promise<Chat
       }),
     });
 
-    if (!res.ok) {
-      throw new Error(`Server Error: ${res.statusText}`);
+    if (!response.ok) {
+      throw new Error("Failed to connect to AI Counsellor");
     }
 
-    return await res.json();
+    return await response.json();
   } catch (error) {
-    console.error("API Call Failed:", error);
-    return { response: "⚠️ Error connecting to AI Counsellor." };
+    console.error("API Error:", error);
+    throw error;
   }
+}
+
+// Add other functions here if you have them (like getting history)
+export async function getHistory(userId: string = "user_1") {
+    const response = await fetch(`${API_URL}/history/${userId}`);
+    return await response.json();
 }
